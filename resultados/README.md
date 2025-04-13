@@ -39,12 +39,15 @@ find / -type f \( -name "*.txt" -o -name "*.flag" -o -name "*.hidden" -o -name "
 
 
 find /home/luffy/ONEPIECE/ -type f -name "flag.txt" -exec cat {} + 2>/dev/null
+```
+![alt text](image-3.png)
 
-
+### Bandera encriptada y desencrpitada respectivamente
+```bash
 747d70776d045300075503510a04555100505105000450000605065356010a015506015201
 FLAG_0a16e1e85da2dc414b4447cd580d63f3
 ```
-![alt text](image-3.png)
+
 
 ```bash
 find / -name "*.zip" 2>/dev/null
@@ -145,6 +148,7 @@ python utils/extract_text_from_image.py
 ```
 ![alt text](image-11.png)
 
+### Bandera encriptada y desencrpitada respectivamente
 ```bash
     a77742694e1c008c493f3c31d4c5d4794a6b0e62c91c12d9451973b213a39287ee4c57d03b
     FLAG_6290739e295d64e0c37f4d839d2f3182
@@ -189,6 +193,7 @@ python utils/extract_text_from_image.py
     done
 ```
 
+### Bandera encriptada y desencrpitada respectivamente
 ```bash
     3fc06ae08a1da3b0dfdd6cdf052435026360b73d778607f9c81ba4c5e3608269653ce10237
     FLAG_c8886f1b7ab0ee2d4e12db4db5d2d4a9
