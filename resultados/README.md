@@ -1,46 +1,95 @@
-# COMMITS HISTORY
+## COMMITS HISTORY
+En estas capturas de pantalla, se deja registro de los commits que fueron parte del proceso para solución de este proyecto.  
+Esto pues, en un principio se había realizado un *fork* y se trabajó en ese *fork*, pero era imposible hacerlo privado, a menos que el repositorio original también lo fuera.  
+Así que mientras tanto, lo hice en otro repositorio, que sí es privado, y permite hacerlo más propio.
+
+
 ![alt text](image-18.png)
 ![alt text](image-19.png)
 
+---
 
+## Clone de proyecto. Instalacion librerias python
+Se hace **clone** del repositorio en una carpeta nueva (con un nombre distintivo que incluye “P1” para diferenciarlo del original).
 
-# Clone de proyecto. Instalacion librerias python
-![image](https://github.com/user-attachments/assets/a18ddd7b-d4db-4e15-b10d-3bf3a520ea41)
-
-![image](https://github.com/user-attachments/assets/f3080e73-df2f-4e6c-ae0d-0760719fec40)
+Luego, se ejecuta:
 
 ```bash
 docker compose up -d
 ```
+
+Este comando levanta los contenedores definidos en el archivo `docker-compose.yml`.  
+- `up` indica que se deben crear e iniciar los contenedores.
+- `-d` ejecuta los contenedores en modo *detached* (en segundo plano), lo cual permite seguir usando la terminal mientras los servicios corren.
+
+
+Una vez levantados los 4 contenedores, y generada la data necesaria, se procede a resolver los desafíos.
+
 ![alt text](image.png)
 
+---
+
 # LUFFY CHALLENGE
+
+Se ejecuta el contenedor
 
 ```bash
 docker exec -it luffy_challenge /bin/bash
 ```
+
+Esto permite ingresar al contenedor `luffy_challenge` con una terminal interactiva (`-it`) y utilizar `/bin/bash` como shell. Esto es útil para explorar el sistema de archivos dentro del contenedor y ejecutar comandos.
+Tomar en cuenta que se realizo desde windows.
+
 ![alt text](image-6.png)
 
+---
 
-### En caso de requerir instalar herramientas, utilizar
+### Acceso como usuario del reto:
 ```bash
-docker exec -u root -it luffy_challenge /bin/bash
-
+su - luffy
+# Contraseña: onepiece
 ```
 
+### En caso de requerir instalar herramientas, utilizar
+En caso de necesitar herramientas como .zip o alguna extra, se utiliza el comando para poder instalarlo, caso
+contrario, no se pueden utilizar las herramientas.
+```bash
+docker exec -u root -it luffy_challenge /bin/bash
+```
+Este comando permite ingresar como **root**, lo cual es útil para instalar herramientas que no estén disponibles por defecto.
+
+
+Para poder hallar las flags o valores necesarios, se hizo un
 ```bash
 grep -r --color=auto "flag" / 2>/dev/null
 ```
+Este comando busca recursivamente (con `-r`) cualquier texto que contenga la palabra "flag" desde la raíz del sistema. Se ignoran los errores de permisos (`2>/dev/null`).
+
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 
 ```bash
 find / -type f \( -name "*.txt" -o -name "*.flag" -o -name "*.hidden" -o -name "*.enc" \) 2>/dev/null
 
+```
+Busca en todo el sistema archivos con extensiones `.txt`, `.flag`, `.hidden` o `.enc`.  
+- `-type f`: solo busca archivos.  
+- `\(...\)`: agrupa condiciones.  
+- `-o`: actúa como operador lógico OR.  
+- `2>/dev/null`: suprime errores (como falta de permisos).
 
+---
+
+```bash
 find /home/luffy/ONEPIECE/ -type f -name "flag.txt" -exec cat {} + 2>/dev/null
 ```
+Busca el archivo `flag.txt` dentro de `/home/luffy/ONEPIECE/` y muestra su contenido:  
+- `-exec cat {} +`: imprime el contenido de los archivos encontrados.  
+- `2>/dev/null`: ignora errores de permisos.
+
 ![alt text](image-3.png)
+
+---
 
 ### Bandera encriptada y desencrpitada respectivamente
 ```bash
@@ -52,13 +101,20 @@ FLAG_0a16e1e85da2dc414b4447cd580d63f3
 ```bash
 find / -name "*.zip" 2>/dev/null
 ```
-![alt text](image-4.png)
+Busca archivos `.zip` en todo el sistema de archivos.
 
+![alt text](image-4.png)
 
 ```bash
 find / -name "*.jpg" -o -name "*.png" 2>/dev/null
 ```
+Busca archivos con extensión `.jpg` o `.png`.  
+- `-o`: operador OR para combinar ambas extensiones.  
+- `2>/dev/null`: suprime errores por falta de permisos.
+
 ![alt text](image-5.png)
+
+---
 
 ### La contraseña para poder acceder a la imagen del .zip es la misma que la utilizada para ingresar al primer contenedor
 
@@ -67,7 +123,15 @@ docker cp luffy_challenge:/home/luffy/ONEPIECE/Zou/Left_Hind_Leg/Casa_de_Inuaras
 onepiece
 imagen extraída
 ```
+
+Copia el archivo `poneglyph.zip` desde la ruta interna del contenedor `luffy_challenge` hacia la carpeta local `./onepiece`:
+- `docker cp`: copia archivos entre contenedor y host.
+- `luffy_challenge:...`: indica el contenedor y la ruta de origen.
+- `./onepiece`: destino en el host local.
+
 ![alt text](part1/poneglyph.jpeg)
+
+---
 
 ### Texto decifrado de la imagen
 ##### b'Crocodile targeted the Arabasta Kingdom because of its Poneglyph, which contained information on the whereabouts of Pluton, '
@@ -75,7 +139,13 @@ ejecutar el comando en la raiz del proyecto
 ```bash
 python utils/extract_text_from_image.py
 ```
+Ejecuta un script de Python para extraer texto de una imagen.
+- El script probablemente hace uso de herramientas como **Tesseract OCR**.
+- La salida suele mostrar texto oculto o codificado en las imágenes relacionadas al reto.
+
 ![alt text](image-14.png)
+
+---
 
 # ZORO CHALLENGE
 
@@ -174,6 +244,7 @@ python utils/extract_text_from_image.py
 ```
 ![alt text](image-16.png)
 
+---
 
 ### NAMI CHALLENGE
 
@@ -220,3 +291,4 @@ docker cp nami_challenge:/home/nami/ONEPIECE/Whole_Cake_Island/Whole_Cake_Chatea
 python utils/extract_text_from_image.py
 ```
 ![alt text](image-17.png)
+
