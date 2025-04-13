@@ -29,7 +29,23 @@ Una vez levantados los 4 contenedores, y generada la data necesaria, se procede 
 
 ---
 
-# LUFFY CHALLENGE
+## LUFFY – XOR Cifrado Simple
+**Dificultad:** Fácil
+
+**Descripción:**
+Se encontró un archivo `flag.txt` que contenía una cadena hexadecimal encriptada. Aplicando la técnica de **XOR** con una clave basada en el carné del estudiante, se logró desencriptar la bandera.
+
+**Pasos clave:**
+- Se accedió al contenedor `luffy_challenge`.
+- Se utilizó `grep` y `find` para localizar archivos relevantes.
+- Se obtuvo el archivo `flag.txt` con la bandera encriptada.
+- Se aplicó XOR con la clave personalizada.
+
+**Flag encontrada:** `FLAG_0a16e1e85da2dc414b4447cd580d63f3`
+
+**Aprendizaje:** El cifrado XOR, aunque simple, es efectivo si la clave es suficientemente aleatoria y desconocida. Aquí se reforzó el entendimiento del cifrado simétrico básico.
+
+## COMANDOS
 
 Se ejecuta el contenedor
 
@@ -147,8 +163,24 @@ Ejecuta un script de Python para extraer texto de una imagen.
 
 ---
 
-# ZORO CHALLENGE
+## ZORO – Romper cifrado RC4
+**Dificultad:** Media
 
+**Descripción:**
+Este reto implicó la lectura de una flag cifrada usando un esquema similar al algoritmo **RC4**. La flag debía descifrarse utilizando una implementación inversa del flujo de cifrado.
+
+**Pasos clave:**
+- Se ingresó al contenedor `zoro_challenge`.
+- Se localizó `flag.txt` con contenido cifrado.
+- Se aplicaron scripts para emular el flujo de claves y revertir el cifrado tipo RC4.
+
+**Flag encontrada:** `FLAG_71fb5f88e9a62612bd9c1d030b1cab53`
+
+**Aprendizaje:** Entender cómo funciona un cifrado por flujo como RC4, y cómo puede ser reversible si se conoce el esquema y la clave.
+
+---
+
+## COMANDOS
 ```bash
     docker exec -it zoro_challenge /bin/bash
 ```
@@ -183,6 +215,7 @@ Ejecuta un script de Python para extraer texto de una imagen.
 ```bash
 find / -name "*.zip" 2>/dev/null
 ```
+Se hace busqueda de los .zip en el sistema. Esto ayudo a hacer una barrido general de todos los archivos
 
 ### Copia a carpeta de windows
 ```bash
@@ -199,9 +232,24 @@ python utils/extract_text_from_image.py
 ![alt text](image-15.png)
 
 
-# USOP CHALLENGE
+## USOPP – Stream Cipher Personalizado
+**Dificultad:** Media
 
-### Lectura de los archivos .txt o cualquier .* que pueda servir
+**Descripción:**
+Se presentó un cifrado por flujo con un generador personalizado, no estándar. Requirió analizar la estructura del archivo cifrado y aplicar ingeniería inversa para deducir el método de generación del flujo.
+
+**Pasos clave:**
+- Se accedió al contenedor `usopp_challenge`.
+- Se encontró la flag cifrada.
+- Se descifró mediante código propio que replicaba el flujo de cifrado personalizado.
+
+**Flag encontrada:** `FLAG_6290739e295d64e0c37f4d839d2f3182`
+
+**Aprendizaje:** Se profundizó en el diseño de cifrados por flujo personalizados y cómo su debilidad radica en la predictibilidad del generador.
+
+---
+
+## COMANDOS
 
 ```bash
     find / -type f \( -name "*.txt" -o -name "*.flag" -o -name "*.hidden" -o -name "*.enc" \) 2>/dev/null
@@ -246,10 +294,24 @@ python utils/extract_text_from_image.py
 
 ---
 
-### NAMI CHALLENGE
+## NAMI – ChaCha20 Playground
+**Dificultad:** Media
 
-### Lectura de los archivos .txt o cualquier .* que pueda servir
+**Descripción:**
+La flag estaba cifrada usando **ChaCha20**, un algoritmo moderno y seguro. Se proporcionaban todos los parámetros necesarios (clave, nonce), por lo que el desafío era más técnico en cuanto al uso correcto del algoritmo.
 
+**Pasos clave:**
+- Acceso al contenedor `nami_challenge`.
+- Se localizó el archivo cifrado.
+- Se utilizó una implementación correcta de ChaCha20 para descifrar la flag.
+
+**Flag encontrada:** `FLAG_c8886f1b7ab0ee2d4e12db4db5d2d4a9`
+
+**Aprendizaje:** El uso práctico de cifrados modernos como ChaCha20 refuerza conocimientos sobre seguridad real en sistemas actuales.
+
+---
+
+## COMANDOS
 ```bash
     find / -type f \( -name "*.txt" -o -name "*.flag" -o -name "*.hidden" -o -name "*.enc" \) 2>/dev/null
 ``` 
