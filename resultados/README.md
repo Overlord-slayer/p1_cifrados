@@ -135,15 +135,12 @@ Busca archivos con extensión `.jpg` o `.png`.
 ### La contraseña para poder acceder a la imagen del .zip es la misma que la utilizada para ingresar al primer contenedor
 
 ```bash
-docker cp luffy_challenge:/home/luffy/ONEPIECE/Zou/Left_Hind_Leg/Casa_de_Inuarashi/poneglyph.zip C:\Users\arg21\OneDrive\Documents\uvg\ctf_onepiece_symetric_cipher_p1\
-onepiece
-imagen extraída
+docker cp luffy_challenge:/home/luffy/ONEPIECE/Zou/Left_Hind_Leg/Casa_de_Inuarashi/poneglyph.zip C:\Users\arg21\OneDrive\Documents\uvg\ctf_onepiece_symetric_cipher_p1\resultados/part1
 ```
-
 Copia el archivo `poneglyph.zip` desde la ruta interna del contenedor `luffy_challenge` hacia la carpeta local `./onepiece`:
 - `docker cp`: copia archivos entre contenedor y host.
 - `luffy_challenge:...`: indica el contenedor y la ruta de origen.
-- `./onepiece`: destino en el host local.
+- `./resultados/part1`: destino en el host local.
 
 ![alt text](part1/poneglyph.jpeg)
 
@@ -184,6 +181,9 @@ Este reto implicó la lectura de una flag cifrada usando un esquema similar al a
 ```bash
     docker exec -it zoro_challenge /bin/bash
 ```
+Esto permite ingresar al contenedor `zoro_challenge` con una terminal interactiva (`-it`) y utilizar `/bin/bash` como shell. Esto es útil para explorar el sistema de archivos dentro del contenedor y ejecutar comandos.
+Tomar en cuenta que se realizo desde windows.
+
 ![alt text](image-7.png)
 
 ### Lectura de los archivos .txt o cualquier .* que pueda servir
@@ -191,6 +191,12 @@ Este reto implicó la lectura de una flag cifrada usando un esquema similar al a
 ```bash
     find / -type f \( -name "*.txt" -o -name "*.flag" -o -name "*.hidden" -o -name "*.enc" \) 2>/dev/null
 ```
+Busca en todo el sistema archivos con extensiones `.txt`, `.flag`, `.hidden` o `.enc`.  
+- `-type f`: solo busca archivos.  
+- `\(...\)`: agrupa condiciones.  
+- `-o`: actúa como operador lógico OR.  
+- `2>/dev/null`: suprime errores (como falta de permisos).
+
 ![alt text](image-8.png)
 
 ### Este comando sirve para hacer una cat de cada uno, y tenerlo mas ordenado que en el caso anterior. Se ve mejor y legible la verdad
@@ -220,8 +226,12 @@ Se hace busqueda de los .zip en el sistema. Esto ayudo a hacer una barrido gener
 ### Copia a carpeta de windows
 ```bash
 docker cp zoro_challenge:/home/zoro/ONEPIECE/Zou/Right_Hind_Leg/Casa_de_Inuarashi/poneglyph.zip "C:\Users\arg21\OneDrive\Documents\uvg\ctf_onepice_symmetric_cipher_p1\resultados\part2"
-
 ```
+Copia el archivo `poneglyph.zip` desde la ruta interna del contenedor `zoro_challenge` hacia la carpeta local `./onepiece`:
+- `docker cp`: copia archivos entre contenedor y host.
+- `zoro_challenge:...`: indica el contenedor y la ruta de origen.
+- `./resultados/part2: destino en el host local.
+
 
 ### Texto decifrado de la imagen
 ##### b'and created the Baroque Works syndicate in an attempt to bring down the Arabasta Kingdom and claim Pluton, employing Robin to read the Poneglyph'
@@ -229,8 +239,13 @@ ejecutar el comando en la raiz del proyecto
 ```bash
 python utils/extract_text_from_image.py
 ```
+Ejecuta un script de Python para extraer texto de una imagen.
+- El script probablemente hace uso de herramientas como **Tesseract OCR**.
+- La salida suele mostrar texto oculto o codificado en las imágenes relacionadas al reto.
+
 ![alt text](image-15.png)
 
+---
 
 ## USOPP – Stream Cipher Personalizado
 **Dificultad:** Media
@@ -252,8 +267,20 @@ Se presentó un cifrado por flujo con un generador personalizado, no estándar. 
 ## COMANDOS
 
 ```bash
+    docker exec -it usopp_challenge /bin/bash
+```
+Esto permite ingresar al contenedor `usopp_challenge` con una terminal interactiva (`-it`) y utilizar `/bin/bash` como shell. Esto es útil para explorar el sistema de archivos dentro del contenedor y ejecutar comandos.
+Tomar en cuenta que se realizo desde windows.
+
+```bash
     find / -type f \( -name "*.txt" -o -name "*.flag" -o -name "*.hidden" -o -name "*.enc" \) 2>/dev/null
 ``` 
+Busca en todo el sistema archivos con extensiones `.txt`, `.flag`, `.hidden` o `.enc`.  
+- `-type f`: solo busca archivos.  
+- `\(...\)`: agrupa condiciones.  
+- `-o`: actúa como operador lógico OR.  
+- `2>/dev/null`: suprime errores (como falta de permisos).
+
 ![alt text](image-10.png)
 
 ### Este comando sirve para hacer una cat de cada uno, y tenerlo mas ordenado que en el caso anterior. Se ve mejor y legible la verdad
@@ -264,7 +291,15 @@ Se presentó un cifrado por flujo con un generador personalizado, no estándar. 
         echo ""
     done
 ```
+1. `find /home/zoro -name "flag.txt"` busca todos los archivos con ese nombre dentro del directorio del reto.
+2. Por cada archivo encontrado, se imprime su ruta (`echo "=== $file ==="`) y su contenido (`cat "$file"`).
+3. `echo ""` añade una línea en blanco para mejorar la legibilidad.
+
+Este método permite revisar múltiples archivos `flag.txt` fácilmente, mostrando cada uno separado y bien organizado, ideal cuando hay más de una flag potencial o para validar contenido cifrado.
+
 ![alt text](image-11.png)
+
+---
 
 ### Bandera encriptada y desencrpitada respectivamente
 ```bash
@@ -275,12 +310,18 @@ Se presentó un cifrado por flujo con un generador personalizado, no estándar. 
 ```bash
 find / -name "*.zip" 2>/dev/null
 ```
+Se hace busqueda de los .zip en el sistema. Esto ayudo a hacer una barrido general de todos los archivos
+
 
 ### Copia a carpeta de windows
 ```bash
 docker cp usopp_challenge:/home/usopp/ONEPIECE/Wano/Onigashima/Casa_de_Yamato/poneglyph.zip "C:\Users\arg21\OneDrive\Documents\uvg\ctf_onepice_symmetric_cipher_p1\resultados\part3"
-
 ```
+Copia el archivo `poneglyph.zip` desde la ruta interna del contenedor `usopp_challenge` hacia la carpeta local `./onepiece`:
+- `docker cp`: copia archivos entre contenedor y host.
+- `usopp_challenge:...`: indica el contenedor y la ruta de origen.
+- `./resultados/part3: destino en el host local.
+
 
 ![alt text](part3/poneglyph.jpeg)
 
@@ -290,6 +331,10 @@ docker cp usopp_challenge:/home/usopp/ONEPIECE/Wano/Onigashima/Casa_de_Yamato/po
 ```bash
 python utils/extract_text_from_image.py
 ```
+Ejecuta un script de Python para extraer texto de una imagen.
+- El script probablemente hace uso de herramientas como **Tesseract OCR**.
+- La salida suele mostrar texto oculto o codificado en las imágenes relacionadas al reto.
+
 ![alt text](image-16.png)
 
 ---
@@ -311,10 +356,24 @@ La flag estaba cifrada usando **ChaCha20**, un algoritmo moderno y seguro. Se pr
 
 ---
 
+```bash
+    docker exec -it nami_challenge /bin/bash
+```
+Esto permite ingresar al contenedor `nami_challenge` con una terminal interactiva (`-it`) y utilizar `/bin/bash` como shell. Esto es útil para explorar el sistema de archivos dentro del contenedor y ejecutar comandos.
+Tomar en cuenta que se realizo desde windows.
+
+
+
 ## COMANDOS
 ```bash
     find / -type f \( -name "*.txt" -o -name "*.flag" -o -name "*.hidden" -o -name "*.enc" \) 2>/dev/null
 ``` 
+Busca en todo el sistema archivos con extensiones `.txt`, `.flag`, `.hidden` o `.enc`.  
+- `-type f`: solo busca archivos.  
+- `\(...\)`: agrupa condiciones.  
+- `-o`: actúa como operador lógico OR.  
+- `2>/dev/null`: suprime errores (como falta de permisos).
+
 ![alt text](image-12.png)
 
 ### Este comando sirve para hacer una cat de cada uno, y tenerlo mas ordenado que en el caso anterior. Se ve mejor y legible la verdad
@@ -326,23 +385,36 @@ La flag estaba cifrada usando **ChaCha20**, un algoritmo moderno y seguro. Se pr
     done
 ```
 
+1. `find /home/zoro -name "flag.txt"` busca todos los archivos con ese nombre dentro del directorio del reto.
+2. Por cada archivo encontrado, se imprime su ruta (`echo "=== $file ==="`) y su contenido (`cat "$file"`).
+3. `echo ""` añade una línea en blanco para mejorar la legibilidad.
+
+Este método permite revisar múltiples archivos `flag.txt` fácilmente, mostrando cada uno separado y bien organizado, ideal cuando hay más de una flag potencial o para validar contenido cifrado.
+
+![alt text](image-13.png)
+
+---
+
 ### Bandera encriptada y desencrpitada respectivamente
 ```bash
     3fc06ae08a1da3b0dfdd6cdf052435026360b73d778607f9c81ba4c5e3608269653ce10237
     FLAG_c8886f1b7ab0ee2d4e12db4db5d2d4a9
 ```
 
-![alt text](image-13.png)
-
 ```bash
 find / -name "*.zip" 2>/dev/null
 ```
+Se hace busqueda de los .zip en el sistema. Esto ayudo a hacer una barrido general de todos los archivos
 
 
 ```bash
 docker cp nami_challenge:/home/nami/ONEPIECE/Whole_Cake_Island/Whole_Cake_Chateau/Casa_de_Big_Mom/poneglyph.zip "C:\Users\arg21\OneDrive\Documents\uvg\ctf_onepice_symmetric_cipher_p1\resultados\part4"
-
 ```
+Copia el archivo `poneglyph.zip` desde la ruta interna del contenedor `nami_challenge` hacia la carpeta local `./onepiece`:
+- `docker cp`: copia archivos entre contenedor y host.
+- `nami_challenge:...`: indica el contenedor y la ruta de origen.
+- `./resultados/part4: destino en el host local.
+
 
 ![alt text](part4/poneglyph.jpeg)
 
@@ -352,5 +424,21 @@ docker cp nami_challenge:/home/nami/ONEPIECE/Whole_Cake_Island/Whole_Cake_Chatea
 ```bash
 python utils/extract_text_from_image.py
 ```
+Ejecuta un script de Python para extraer texto de una imagen.
+- El script probablemente hace uso de herramientas como **Tesseract OCR**.
+- La salida suele mostrar texto oculto o codificado en las imágenes relacionadas al reto.
+
 ![alt text](image-17.png)
 
+
+## Reflexión Final
+
+Este proyecto permitió aplicar conocimientos prácticos sobre criptografía simétrica, manipulación de contenedores Docker, y técnicas de análisis de archivos cifrados o escondidos. Cada reto presentó un nivel de dificultad creciente, lo cual ayudó a reforzar distintas habilidades:
+
+- Comprender e implementar XOR manualmente.
+- Aplicar lógica inversa a cifrados por flujo como RC4.
+- Descifrar algoritmos personalizados a través de ingeniería inversa.
+- Trabajar con cifrados modernos como ChaCha20 de forma segura.
+- Extraer información de imágenes utilizando OCR.
+
+Además, se fortaleció la capacidad para trabajar con entornos Linux, automatizar tareas con comandos de terminal, y documentar de forma clara cada paso del proceso. Esta experiencia representa una excelente base para desafíos más complejos de ciberseguridad y CTF.
