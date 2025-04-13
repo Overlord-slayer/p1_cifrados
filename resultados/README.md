@@ -99,8 +99,10 @@ python utils/extract_text_from_image.py
 ![alt text](image-9.png)
 
 ### Bandera encriptada y desencrpitada respectivamente
-c5c698284ebf7b97371a0e693bc84a6fd1bb76346e9dc6d62d0dffe5b8f06d16d53b3d1967
-FLAG_71fb5f88e9a62612bd9c1d030b1cab53
+```bash
+    c5c698284ebf7b97371a0e693bc84a6fd1bb76346e9dc6d62d0dffe5b8f06d16d53b3d1967
+    FLAG_71fb5f88e9a62612bd9c1d030b1cab53
+```
 
 ![alt text](part2/poneglyph.jpeg)
 
@@ -143,9 +145,10 @@ python utils/extract_text_from_image.py
 ```
 ![alt text](image-11.png)
 
-a77742694e1c008c493f3c31d4c5d4794a6b0e62c91c12d9451973b213a39287ee4c57d03b
-FLAG_6290739e295d64e0c37f4d839d2f3182
-
+```bash
+    a77742694e1c008c493f3c31d4c5d4794a6b0e62c91c12d9451973b213a39287ee4c57d03b
+    FLAG_6290739e295d64e0c37f4d839d2f3182
+```
 
 ```bash
 find / -name "*.zip" 2>/dev/null
@@ -185,9 +188,11 @@ python utils/extract_text_from_image.py
         echo ""
     done
 ```
-3fc06ae08a1da3b0dfdd6cdf052435026360b73d778607f9c81ba4c5e3608269653ce10237
-FLAG_c8886f1b7ab0ee2d4e12db4db5d2d4a9
 
+```bash
+    3fc06ae08a1da3b0dfdd6cdf052435026360b73d778607f9c81ba4c5e3608269653ce10237
+    FLAG_c8886f1b7ab0ee2d4e12db4db5d2d4a9
+```
 
 ![alt text](image-13.png)
 
