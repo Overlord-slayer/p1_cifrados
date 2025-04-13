@@ -147,7 +147,10 @@ Copia el archivo `poneglyph.zip` desde la ruta interna del contenedor `luffy_cha
 ---
 
 ### Texto decifrado de la imagen
-##### b'Crocodile targeted the Arabasta Kingdom because of its Poneglyph, which contained information on the whereabouts of Pluton, '
+b'Crocodile targeted the Arabasta Kingdom because of its Poneglyph, which contained information on the whereabouts of Pluton, '
+
+---
+
 ejecutar el comando en la raiz del proyecto
 ```bash
 python utils/extract_text_from_image.py
@@ -234,7 +237,10 @@ Copia el archivo `poneglyph.zip` desde la ruta interna del contenedor `zoro_chal
 
 
 ### Texto decifrado de la imagen
-##### b'and created the Baroque Works syndicate in an attempt to bring down the Arabasta Kingdom and claim Pluton, employing Robin to read the Poneglyph'
+b'and created the Baroque Works syndicate in an attempt to bring down the Arabasta Kingdom and claim Pluton, employing Robin to read the Poneglyph'
+
+---
+
 ejecutar el comando en la raiz del proyecto
 ```bash
 python utils/extract_text_from_image.py
@@ -327,7 +333,11 @@ Copia el archivo `poneglyph.zip` desde la ruta interna del contenedor `usopp_cha
 
 
 ### Texto decifrado de la imagen
-##### b'When Robin finally got the chance to read this Poneglyph, however, she lied about its contents, which caused Crocodile to turn against her because he no longer needed her'ejecutar el comando en la raiz del proyecto
+ b'When Robin finally got the chance to read this Poneglyph, however, she lied about its contents, which caused Crocodile to turn against her because he no longer needed her'
+
+---
+
+ejecutar el comando en la raiz del proyecto
 ```bash
 python utils/extract_text_from_image.py
 ```
@@ -420,7 +430,11 @@ Copia el archivo `poneglyph.zip` desde la ruta interna del contenedor `nami_chal
 
 
 ### Texto decifrado de la imagen
-##### b'When Robin finally got the chance to read this Poneglyph, however, she lied about its contents, which caused Crocodile to turn against her because he no longer needed her'ejecutar el comando en la raiz del proyecto
+b'the Tomb of the Kings where the Poneglyph was held became unstable and began collapsing around them.'
+---
+
+ejecutar el comando en la raiz del proyecto
+
 ```bash
 python utils/extract_text_from_image.py
 ```
