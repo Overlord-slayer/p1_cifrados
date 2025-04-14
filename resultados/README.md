@@ -444,6 +444,18 @@ Ejecuta un script de Python para extraer texto de una imagen.
 
 ![alt text](image-17.png)
 
+---
+
+# Decifrado de texto
+En este caso, se utilizo el scritp provisto por el catedrático, el extract_text_from_image.py, ubicado en utils.
+
+![alt text](image-20.png)
+
+En el image_path, se coloca respectivamente la ruta de la imagen de cada uno de los desafíos. En este caso, como se pudo apreciar
+previamente, se traslado todo lo que se tenia en el contenedor a una carpeta local con el comando descrito. Y bueno, esto nos 
+dió cada uno de los textos que se pudieron apreciar en cada uno de los desafíos previos.
+
+---
 
 ## Reflexión Final
 
@@ -455,4 +467,6 @@ Este proyecto permitió aplicar conocimientos prácticos sobre criptografía sim
 - Trabajar con cifrados modernos como ChaCha20 de forma segura.
 - Extraer información de imágenes utilizando OCR.
 
-Además, se fortaleció la capacidad para trabajar con entornos Linux, automatizar tareas con comandos de terminal, y documentar de forma clara cada paso del proceso. Esta experiencia representa una excelente base para desafíos más complejos de ciberseguridad y CTF.
+A mí parecer, perdió un poco de dificultad al poder hacer un barrido general haciendo fácil todos los desafíos. Así mismo, siento que
+quizás seria más entretenido hacerlo de manera inversa, que los estudiantes hagan su propio contenedor para que el catedrático pueda 
+ver las habilidades de seguridad de cada estudiante, por cuestión de tiempo, hacerlo por vídeo. Quizás algo más divertido, seria que fuera 1 por cada, o que fuera provisto por el catedrático un grupo de actividades que fuera seleccionada por alumno para que fuera único y no se pudieran copiar, eso siento que seria más divertido, pero lo de aquí, si me gusto, no lo niego, esta interesante, pero como mencioné, siento que es más divertido hacerlo para.
