@@ -80,13 +80,14 @@ Para poder hallar las flags o valores necesarios, se hizo un
 grep -r --color=auto "flag" / 2>/dev/null
 ```
 Este comando busca recursivamente (con `-r`) cualquier texto que contenga la palabra "flag" desde la raíz del sistema. Se ignoran los errores de permisos (`2>/dev/null`).
+En este caso, se utilizo para buscar globalmente los .flag que hubiera, pero me di cuenta que era tan global o tan generico, que daba resultados un poco raroso, como el flag 010002
+que no era lo esperado y no tenia nada que ver con el ejercicio.
 
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 
 ```bash
 find / -type f \( -name "*.txt" -o -name "*.flag" -o -name "*.hidden" -o -name "*.enc" \) 2>/dev/null
-
 ```
 Busca en todo el sistema archivos con extensiones `.txt`, `.flag`, `.hidden` o `.enc`.  
 - `-type f`: solo busca archivos.  
@@ -94,6 +95,8 @@ Busca en todo el sistema archivos con extensiones `.txt`, `.flag`, `.hidden` o `
 - `-o`: actúa como operador lógico OR.  
 - `2>/dev/null`: suprime errores (como falta de permisos).
 
+Viendo que el comando inicial daba resultados muy generico, se probo con este otro. Este otro si dio el resultado esperado, pues hizo mappeo en el area esperada. 
+Donde estan las carpetas de Luffy.
 ---
 
 ```bash
@@ -102,6 +105,8 @@ find /home/luffy/ONEPIECE/ -type f -name "flag.txt" -exec cat {} + 2>/dev/null
 Busca el archivo `flag.txt` dentro de `/home/luffy/ONEPIECE/` y muestra su contenido:  
 - `-exec cat {} +`: imprime el contenido de los archivos encontrados.  
 - `2>/dev/null`: ignora errores de permisos.
+
+Este comando ya permitio ver el contenido de los .flag hallados, ya que el desafio era de Luffy, se hizo unicamente en todos los .flag dentro de la carpeta luffy.
 
 ![alt text](image-3.png)
 
@@ -117,7 +122,7 @@ FLAG_0a16e1e85da2dc414b4447cd580d63f3
 ```bash
 find / -name "*.zip" 2>/dev/null
 ```
-Busca archivos `.zip` en todo el sistema de archivos.
+Busca archivos `.zip` en todo el sistema de archivos. Ya que hay una imagen encriptada en uno.
 
 ![alt text](image-4.png)
 
@@ -127,6 +132,8 @@ find / -name "*.jpg" -o -name "*.png" 2>/dev/null
 Busca archivos con extensión `.jpg` o `.png`.  
 - `-o`: operador OR para combinar ambas extensiones.  
 - `2>/dev/null`: suprime errores por falta de permisos.
+
+Este era para ver si habia una imagen que se esperaria, tuviera el texto, pero no se hallo nada.
 
 ![alt text](image-5.png)
 
@@ -200,6 +207,8 @@ Busca en todo el sistema archivos con extensiones `.txt`, `.flag`, `.hidden` o `
 - `-o`: actúa como operador lógico OR.  
 - `2>/dev/null`: suprime errores (como falta de permisos).
 
+Se hizo lo mismo que en el contenedor anterior, esperando a que funcionara y lo hizo, simplificando el trabajo.
+
 ![alt text](image-8.png)
 
 ### Este comando sirve para hacer una cat de cada uno, y tenerlo mas ordenado que en el caso anterior. Se ve mejor y legible la verdad
@@ -210,6 +219,8 @@ Busca en todo el sistema archivos con extensiones `.txt`, `.flag`, `.hidden` o `
         echo ""
     done
 ```
+En esta ocasion, se imprime de una manera mas ordenada, para poder distinguir el texto cifrado, que seria la flag a encontrar.
+
 ![alt text](image-9.png)
 
 ### Bandera encriptada y desencrpitada respectivamente
