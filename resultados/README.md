@@ -170,6 +170,11 @@ Ejecuta un script de Python para extraer texto de una imagen.
 
 ---
 
+## JUSTIFICACIÓN RESOLUCIÓN LUFFY CHALLEGE
+En este caso, como muy bien se pudo apreciar, se realizó un recorrido general. Al principio fue a prueba y error con este primer desafío, pues no se sabía si era la mejor idea, pero se pensó en términos de que en la vida real, uno no debería buscar uno a uno los documentos de manera manual, pues desea saber el problema de manera inmediata. Quizás hizo un salto en cuanto a la búsqueda, pero se hizo en cuanto a la rúbrica o pistas proporcionadas en el README original. Al hacer la búsqueda, y lectura de todos los archivos sugeridos, agilizo el tema de la obtención de los resultados. Una vez realizada la lectura de los archivos y viendo el contenido, se hizo la búsqueda de los .zip, luego de, por cualquier cosa, se hizo la búsqueda global de las imágenes, pensando que estarían libres. Al final, si estaba en un .zip. Una vez obtenida la clave para el siguiente desafío, y el .zip, se trasladó el .zip del contenedor a una carpeta local para poder desencriptar. En este caso, la clave inicial fue proporcionada por el catedrático, así que con la misma, se descomprime el .zip, que requiere una clave. Teniendo la imagen, se utilizo el codigo provisto en utils, para poder extraer el texto/párrafo de la imagen,
+
+---
+
 ## ZORO – Romper cifrado RC4
 **Dificultad:** Media
 
@@ -261,6 +266,11 @@ Ejecuta un script de Python para extraer texto de una imagen.
 - La salida suele mostrar texto oculto o codificado en las imágenes relacionadas al reto.
 
 ![alt text](image-15.png)
+
+---
+
+## JUSTIFICACÓN RESOLUCIÓN ZORO CHALLEGE
+En este caso, una vez viendo que funcionó el tema de hacer un barrido global, se aplica el mismo proceso, esperando que fuera el mismo con resultados exitosos. En este caso funcionó, y se obtuvo la información de la misma manera, se leyeron todos los archivos de pista para ocultar la clave encriptada. Se busca y se traslada el .zip del contenedor a una carpeta  local. Se descomprime, se utilizó la clave hallada para este desafío, igual, para descomprimirlo. Con el código de rails, se utilizó para extracción de texto/párrafo en la imagen y wala, desafío terminado.
 
 ---
 
@@ -357,6 +367,11 @@ Ejecuta un script de Python para extraer texto de una imagen.
 - La salida suele mostrar texto oculto o codificado en las imágenes relacionadas al reto.
 
 ![alt text](image-16.png)
+
+---
+
+## JUSTIFICACIÓN RESOLUCIÓN USOPP CHALLENGE
+En este caso, como ya se ha probado en los 2 desafíos anteriores, se hizo el mismo proceso. Utilizar la flag desencriptada, para poder ingresar, hacer mapeo global, lectura de, luego mapeo de .zip, para luego trasladar del contenedor al computador local. Una vez tenido ello, extraer la imagen y wala, se terminó rápido.
 
 ---
 
@@ -468,6 +483,11 @@ dió cada uno de los textos que se pudieron apreciar en cada uno de los desafío
 
 ---
 
+## JUSTIFICACIÓN RESOLUCIÓN NAMI CHALLEGE
+En este caso, como ya se ha probado en los 3 desafíos anteriores, se hizo el mismo proceso. Utilizar la flag desencriptada, para poder ingresar, hacer mapeo global, lectura de, luego mapeo de .zip, para luego trasladar del contenedor al computador local. Una vez tenido ello, extraer la imagen y wala, se terminó rápido el último desafío. 
+
+---
+
 ## Reflexión Final
 
 Este proyecto permitió aplicar conocimientos prácticos sobre criptografía simétrica, manipulación de contenedores Docker, y técnicas de análisis de archivos cifrados o escondidos. Cada reto presentó un nivel de dificultad creciente, lo cual ayudó a reforzar distintas habilidades:
@@ -481,3 +501,5 @@ Este proyecto permitió aplicar conocimientos prácticos sobre criptografía sim
 A mí parecer, perdió un poco de dificultad al poder hacer un barrido general haciendo fácil todos los desafíos. Así mismo, siento que
 quizás seria más entretenido hacerlo de manera inversa, que los estudiantes hagan su propio contenedor para que el catedrático pueda 
 ver las habilidades de seguridad de cada estudiante, por cuestión de tiempo, hacerlo por vídeo. Quizás algo más divertido, seria que fuera 1 por cada, o que fuera provisto por el catedrático un grupo de actividades que fuera seleccionada por alumno para que fuera único y no se pudieran copiar, eso siento que seria más divertido, pero lo de aquí, si me gusto, no lo niego, esta interesante, pero como mencioné, siento que es más divertido hacerlo para.
+
+Honestamente, sirvió demasiado el hacer barrido global, fue más rápido, al principio, si era un poco complicado porque no se sabía que era lo que se debía hacer, pero luego, definiendo bien lo que se debía hacer, o el área de búsqueda, salió rápido. Igual, lo pensé hacer así, porque como medio menciona en el primer desafío, y bueno, también tener pistas ayudó, era más fácil hacer búsqueda global, que uno a uno. El tiempo apremia y poder solucionar o hallar el problema antes de, es muy útil
